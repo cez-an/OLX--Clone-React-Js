@@ -4,101 +4,93 @@ import { IoIosArrowDown, IoMdSearch } from "react-icons/io";
 
 type NavbarProps = {
   toggleModal: () => void;
+  toggleModalSell: () => void;
 };
 
-const Navbar: React.FC<NavbarProps> = ({ toggleModal }) => {
+const Navbar: React.FC<NavbarProps> = ({ toggleModal, toggleModalSell }) => {
   return (
     <>
-      <nav className="relative z-10 py-2 bg-gray-300/40 flex items-center justify-start px-[1%] w-screen">
-        <img src="/icons/10001.svg" className="w-12 " alt="icon" />
-        <div className="relative ml-5 border max-w-[278px] rounded">
-          <IoMdSearch className="absolute text-2xl top-2.5 left-2 text-gray-500" />
-          <IoIosArrowDown className="absolute text-2xl top-2.5 right-2 pointer-events-none text-gray-500" />
-          <select
-            className="appearance-none border py-2 pl-9 pr-8 w-full text-gray-700 focus:outline-none"
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select State
-            </option>
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            <option value="Assam">Assam</option>
-            <option value="Bihar">Bihar</option>
-            <option value="Chhattisgarh">Chhattisgarh</option>
-            <option value="Goa">Goa</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Meghalaya">Meghalaya</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Nagaland">Nagaland</option>
-            <option value="Odisha">Odisha</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Sikkim">Sikkim</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Telangana">Telangana</option>
-            <option value="Tripura">Tripura</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="Uttarakhand">Uttarakhand</option>
-            <option value="West Bengal">West Bengal</option>
-            <option value="Andaman and Nicobar Islands">
-              Andaman and Nicobar Islands
-            </option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Dadra and Nagar Haveli and Daman and Diu">
-              Dadra and Nagar Haveli and Daman and Diu
-            </option>
-            <option value="Delhi">Delhi (NCT)</option>
-            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-            <option value="Ladakh">Ladakh</option>
-            <option value="Lakshadweep">Lakshadweep</option>
-            <option value="Puducherry">Puducherry</option>
-          </select>
-        </div>
-        <div className="relative ml-5 border-2 w-full max-w-[1129px] rounded">
-          <div className="absolute bg-black w-11 h-full right-0 rounded-r"></div>
+      <nav className="bg-gray-300/40 w-full">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between py-2 px-4">
+          <img src="/icons/10001.svg" className="w-12" alt="icon" />
 
-          <input
-            type="text"
-            className="relative py-2 pl-3 text-black rounded w-full pr-12"
-            placeholder='Search "Cars"'
-          />
-          <IoMdSearch className="absolute text-2xl text-white top-2.5 right-2" />
-        </div>
+          <div className="hidden lg:flex relative ml-5 border rounded w-[260px]">
+            <IoMdSearch className="absolute text-2xl top-2.5 left-2 text-gray-500" />
+            <IoIosArrowDown className="absolute text-2xl top-2.5 right-2 text-gray-500 pointer-events-none" />
+            <select
+              className="appearance-none py-2 pl-9 pr-8 w-full text-gray-700 focus:outline-none"
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Select State
+              </option>
+              <option>Kerala</option>
+              <option>Tamil Nadu</option>
+              <option>Karnataka</option>
+              <option>Maharashtra</option>
+            </select>
+          </div>
 
-        <div className="relative flex ">
-          <select
-            name="language"
-            id=""
-            className="  text-center ml-4 pr-7 font-bold border-0 w-full focus:outline-none appearance-none"
-          >
-            <option value="">ENGLISH</option>
-            <option value="">हिन्दी</option>
-          </select>
-          <IoIosArrowDown className="absolute text-2xl top-0.5 right-0 pointer-events-none text-gray-500" />
-        </div>
+          <div className="relative ml-5 border-2 rounded overflow-hidden flex-1 max-w-[800px]">
+            <input
+              type="text"
+              className="py-2 pl-3 pr-12 w-full focus:outline-none"
+              placeholder='Search "Cars"'
+            />
+            <button className="absolute top-0 right-0 bg-black text-white h-full w-11 flex items-center justify-center">
+              <IoMdSearch className="text-2xl" />
+            </button>
+          </div>
 
-        <FaRegHeart className="text-2xl ml-4 cursor-pointer" />
+          <div className="hidden md:flex ml-4 relative">
+            <select className="text-center font-bold border-0 focus:outline-none appearance-none pr-6">
+              <option>ENGLISH</option>
+              <option>हिन्दी</option>
+            </select>
+            <IoIosArrowDown className="absolute top-1 right-0 text-xl text-gray-500" />
+          </div>
 
-        <div className="flex justify-center items-center gap-5 ml-5">
-          <p className="cursor-pointer" onClick={toggleModal}>
-            Login
-          </p>
-          <img
-            src="/assets/addButton.png"
-            alt=""
-            className="w-25 cursor-pointer"
-          />
+          <div className="flex items-center gap-5 ml-4">
+            <FaRegHeart className="text-2xl cursor-pointer" />
+            <p onClick={toggleModal} className="cursor-pointer">
+              Login
+            </p>
+            <img
+              src="/assets/addButton.png"
+              className="w-24 cursor-pointer"
+              onClick={toggleModalSell}
+              alt="Sell"
+            />
+          </div>
         </div>
       </nav>
+
+      <div className="hidden lg:flex border-t-2 border-b-2  border-gray-300/40  bg-white w-full mt-1">
+        <div className="max-w-[1400px] mx-auto flex items-center px-6 py-2 w-full">
+          <p className="flex gap-2 font-semibold">
+            ALL CATEGORIES
+            <IoIosArrowDown className="text-xl" />
+          </p>
+          <ul className="ml-10 flex gap-5 text-sm flex-wrap">
+            <li>Cars</li>
+            <li>Motorcycles</li>
+            <li>Mobile Phones</li>
+            <li>For Sale: Homes & Apartments</li>
+            <li>Scooters</li>
+            <li>Commercial & Other Vehicles</li>
+            <li>For Rent: Homes & Apartments</li>
+          </ul>
+          <p className="ml-auto font-medium">
+            {new Date()
+              .toLocaleDateString("en-US", {
+                month: "short",
+                day: "2-digit",
+                year: "numeric",
+              })
+              .replace(",", "")}
+          </p>
+        </div>
+      </div>
     </>
   );
 };
